@@ -1,0 +1,43 @@
+The solution involves careful consideration of unit usage and spacing within `calc()` expressions. 
+
+Here's how to fix the issues shown in `bug.css`:
+
+**1. Combining Units:**
+
+Instead of subtracting pixels from percentages directly, consider alternative approaches like using variables or intermediate calculations.
+
+```css
+:root {
+  --element-width: 50%;
+  --element-margin: 10px;
+}
+
+.element {
+  width: calc(var(--element-width) - var(--element-margin));
+}
+```
+
+This provides better clarity and maintainability, allowing for easier adjustments.  Or if you want a percentage based calculation do the following:
+
+```css
+.element {
+  width: 50%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+```
+
+**2. Spacing in Calculations:**
+
+Always ensure that spaces are present around operators (e.g., +, -, *, /) within `calc()`:
+
+```css
+.element {
+  margin: calc(10px + 2em);
+}
+```
+
+**3. Nested `calc()`:**
+If you must nest `calc()` make sure you are using consistent units. It is best to avoid this if possible.
+
+These corrected examples are showcased in `bugSolution.css`.
