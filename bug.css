@@ -1,0 +1,19 @@
+The CSS property `calc()` is used to perform calculations, but it can sometimes produce unexpected results when combined with units. For example, the following code will not work as expected:
+
+```css
+.element { width: calc(50% - 10px); }
+```
+
+This is because the browser interprets the calculation as `50% - 10px` which will result in different widths. This is because 50% refers to the width of the parent container, and 10px is fixed unit. Subtracting a fixed unit from a percentage unit does not work as expected.
+
+Another common issue is using `calc()` with multiple units without proper spacing.  For instance:
+
+```css
+.element { margin: calc(10px+2em); }
+```
+
+This will not work as expected. The spaces around the plus sign are crucial. It should be `calc(10px + 2em);`
+
+Also, be aware that using `calc()` within other CSS properties might lead to issues. For example, `calc()` within `transform: translate()` needs to have pixels specified, and not percentages.   
+
+And, in some browsers there can be issues with using nested `calc()` functions.
